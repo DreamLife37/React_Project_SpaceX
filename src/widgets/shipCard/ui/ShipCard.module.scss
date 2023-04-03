@@ -1,0 +1,166 @@
+@import './src/shared/styles/variables';
+
+.shipCard {
+  background-color: $bgColor;
+  color: $textColor;
+
+  .shipCard__inner {
+    padding: 56px 72px;
+    max-width: 644px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+
+    .shipCard__header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .shipCard__return {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+        gap: 8px;
+      }
+
+      .shipCard__title {
+        color: $textThirdColor;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 130%;
+      }
+    }
+
+    .shipCard__body {
+      .shipCard__params {
+        display: flex;
+        gap: 83px;
+
+        .shipCard__typeWeight {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+
+          .shipCard__type {
+            .shipCard__typeLabel {
+              color: $textSecondColor;
+              margin-right: 24px;
+            }
+          }
+
+          .shipCard__weight {
+            .shipCard__weightLabel {
+              color: $textSecondColor;
+              margin-right: 25px;
+            }
+          }
+        }
+
+        .shipCard__portYear {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+
+          .shipCard__port {
+            .shipCard__typeLabel {
+              color: $textSecondColor;
+              margin-right: 24px;
+            }
+          }
+
+          .shipCard__year {
+            .shipCard__yearLabel {
+              color: $textSecondColor;
+              margin-right: 36px;
+            }
+          }
+        }
+
+      }
+
+      .shipCard__missions {
+        .shipCard__missionsLabel {
+          padding-top: 32px;
+          padding-bottom: 24px;
+          color: $textSecondColor;
+        }
+
+        .shipCard__missionsText {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .shipCard {
+    .shipCard__inner {
+      padding: 37px 8px 48px 8px;
+
+      .shipCard__header {
+        .shipCard__title {
+          font-weight: 500;
+          font-size: 32px;
+          line-height: 130%;
+        }
+      }
+
+      .shipCard__body {
+        .shipCard__params {
+          flex-direction: column;
+          gap: 16px;
+
+          .shipCard__typeWeight {
+            gap: 16px;
+
+            .shipCard__type {
+              .shipCard__typeLabel {
+                margin-right: 35px;
+                font-weight: 500;
+              }
+            }
+
+            .shipCard__weight {
+              .shipCard__weightLabel {
+                margin-right: 35px;
+              }
+            }
+
+          }
+
+          .shipCard__portYear {
+            gap: 16px;
+
+            .shipCard__port {
+              .shipCard__typeLabel {
+                margin-right: 26px;
+              }
+            }
+
+            .shipCard__year {
+              .shipCard__yearLabel {
+                margin-right: 36px;
+              }
+            }
+
+
+          }
+        }
+
+        .shipCard__missions {
+          .shipCard__missionsLabel {
+            padding-top: 16px;
+            padding-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}

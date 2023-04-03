@@ -1,0 +1,79 @@
+@import './src/shared/styles/variables';
+
+.shipItem {
+  background-color: $bgSecondColor;
+  border-radius: 8px;
+  height: 130px;
+  width: 100%;
+  padding: 32px;
+  cursor: pointer;
+  position: relative;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    background-color: $bgHoverColor;
+  }
+
+  &:hover:before {
+    background-color: $bgHoverColor;
+    content: url("data:image/svg+xml;charset=UTF-8,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 12L6 12M18 12L11.6364 18M18 12L11.6364 6' stroke='%23F2F2F2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    position: absolute;
+    top: 53px;
+    right: 32px;
+  }
+
+  .ship__name {
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  .ship__body {
+    display: grid;
+    font-weight: 500;
+    font-size: 16px;
+    grid-template-columns: 0.5fr 1fr;
+
+    .ship__type {
+      .ship__typeLabel {
+        padding-right: 24px;
+        color: $textSecondColor;
+      }
+    }
+
+    .ship__port {
+      .ship__portLabel {
+        padding-right: 24px;
+        color: $textSecondColor;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 507px) {
+  .shipItem {
+    height: 153px;
+    padding: 24px;
+
+    .ship__body {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  .shipItem {
+    &:hover:before {
+      background-color: $bgHoverColor;
+      content: ''
+    }
+  }
+}
+

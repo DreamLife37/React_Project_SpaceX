@@ -1,0 +1,1 @@
+export {ShipCardPage} from './ui/ShipCardPage'

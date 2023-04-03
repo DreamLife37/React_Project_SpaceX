@@ -1,0 +1,90 @@
+@import './src/shared/styles/variables';
+
+.ships {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background-color: $bgColor;
+  margin: 40px 72px 146px 72px;
+
+  .ships__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    color: $textThirdColor;
+
+    .ships__title {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 130%;
+    }
+
+    .iconFilter {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+
+      .iconFilter__text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+      }
+    }
+    .ships__textNoShips {
+      padding-top: 20px;
+      font-size: 18px;
+      color: #C5C7CE;
+    }
+  }
+
+  .ships__pagination {
+    margin-top: 40px;
+  }
+}
+
+.ships_inactive {
+  display: none;
+}
+
+@media (max-width: 955px) {
+  .ships {
+    margin: 40px 26px 54px 26px;
+
+    .ships__inner {
+      gap: 8px;
+    }
+  }
+}
+
+
+@media (max-width: 840px) {
+  .ships {
+    margin: 32px 16px 54px 16px;
+
+    .ships__inner {
+      .ships__title {
+        font-size: 32px;
+      }
+
+      .iconFilter {
+        display: flex;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 507px) {
+  .ships {
+    margin: 32px 8px 54px 8px;
+
+    .ships__inner {
+      gap: 8px;
+    }
+
+    .ships__pagination {
+      margin-top: 24px;
+    }
+  }
+}

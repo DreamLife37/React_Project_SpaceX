@@ -1,0 +1,33 @@
+@import './src/shared/styles/variables';
+
+.select {
+  display: flex;
+  flex-direction: column;
+
+  .select__label {
+    color: #C5C7CE;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    padding-bottom: 4px;
+  }
+
+  .select__input {
+    height: 48px;
+    background: $bgHoverColor;
+    color: $textColor;
+    border: none;
+  }
+}
+
+.select__iconUpDown {
+  margin-right: 8px;
+}
+
+.select__checkbox {
+  color: $textSecondColor;
+
+  svg {
+    fill: $textColor;
+  }
+}

@@ -1,0 +1,64 @@
+@import './src/shared/styles/variables';
+
+.sidebar {
+  background-color: $bgSecondColor;
+  color: #FFF;
+  padding: 40px;
+
+  .sidebar__inner {
+    display: flex;
+    flex-direction: column;
+    width: 312px;
+
+    .sidebar__title {
+      display: flex;
+      align-items: center;
+      font-family: Roboto, sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      gap: 8px;
+      margin-bottom: 24px;
+
+      .sidebar__titleImg {
+        cursor: pointer;
+        display: none;
+      }
+    }
+
+    .sidebar__body {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .sidebarType {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.sidebar__titleImg_active {
+  display: flex;
+  cursor: pointer;
+}
+
+@media (max-width: 840px) {
+  .sidebar {
+    display: none;
+
+    .sidebar__inner {
+      .sidebar__title {
+        .sidebar__titleImg {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+.sidebar_active {
+  display: block;
+  margin: auto;
+  width: 500px;
+}

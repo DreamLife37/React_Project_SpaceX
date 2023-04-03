@@ -1,0 +1,53 @@
+@import './src/shared/styles/variables';
+
+.pagination {
+  display: flex;
+  gap: 12px;
+  color: $textColor;
+  cursor: pointer;
+  align-items: center;
+
+  .pagination__prev_disabled {
+    height: 24px;
+    width: 24px;
+    cursor: auto;
+
+    img {
+      display: none;
+    }
+  }
+
+  .pagination__prev {
+    cursor: pointer;
+
+    .pagination__prevImg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .pagination__currentPage {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+  }
+
+  .pagination__next_disabled {
+    height: 24px;
+    width: 24px;
+    cursor: auto;
+
+    img {
+      display: none;
+    }
+  }
+
+  .pagination__next {
+    cursor: pointer;
+
+    .pagination__nextImg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}

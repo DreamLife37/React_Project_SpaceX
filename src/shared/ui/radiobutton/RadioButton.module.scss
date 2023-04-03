@@ -1,0 +1,55 @@
+@import './src/shared/styles/variables';
+
+.radioButton__label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: $textThirdColor;
+}
+
+.radioButtonGroup__label {
+  padding-bottom: 8px;
+  color: #C5C7CE;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.radioButton {
+  padding: 9px 0;
+  display: flex;
+  align-content: center;
+
+  .radioButton__input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    + .radioButton__label {
+      &:before {
+        content: '';
+        background: $bgSecondColor;
+        border-radius: 100%;
+        border: 2px solid $textSecondColor;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        position: relative;
+        margin-right: 12px;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center;
+        transition: all 250ms ease;
+      }
+    }
+
+    &:checked {
+      + .radioButton__label {
+        &:before {
+          background-color: $textColor;
+          box-shadow: inset 0 0 0 3px $bgSecondColor;
+          border: 2px solid $textColor;
+        }
+      }
+    }
+  }
+}

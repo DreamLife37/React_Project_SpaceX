@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {
     MenuItem,
     FormControl,
@@ -18,13 +18,20 @@ type OptionType = {
 }
 
 type PropsType = {
-    onChange: (e: string) => void
+    selected: string[]
+    onChange: (e: string[]) => void
     options: OptionType[]
 }
 
-export const MultiSelect: FC<PropsType> = ({onChange, options}) => {
-    const [selectedValues, setSelectedValues] = useState<string[]>(['Любой']);
+export const MultiSelect: FC<PropsType> = ({onChange, options, selected}) => {
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
     const [open, setOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (selected.length > 0) {
+            setSelectedValues(selected)
+        } else setSelectedValues(['Любой'])
+    }, [selected])
 
     const handleChange = (event: SelectChangeEvent<typeof selectedValues>) => {
         const {
@@ -34,12 +41,7 @@ export const MultiSelect: FC<PropsType> = ({onChange, options}) => {
             typeof value === "string" ? value.split(",") : value;
 
         setSelectedValues(createArray);
-
-        if (createArray.length > 1) {
-            onChange(createArray[selectedValues.length])
-        } else {
-            onChange('')
-        }
+        onChange(createArray.slice(1))
     };
 
     const handleSwitch = () => {
@@ -61,9 +63,9 @@ export const MultiSelect: FC<PropsType> = ({onChange, options}) => {
                             value={selectedValues}
                             onChange={handleChange}
                             renderValue={() =>
-                                selectedValues.length !== 1
-                                    ? `Выбрано  ${selectedValues.length - 1}`
-                                    : "Любой"
+                                selectedValues[0] === 'Любой'
+                                    ? "Любой"
+                                    : `Выбрано  ${selectedValues.length}`
                             }
                             IconComponent={() =>
                                 open ? (

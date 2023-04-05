@@ -5,7 +5,15 @@ import {Search} from "shared/ui/search/Search";
 import iconArrowLeft from "shared/assets/svg/arrowLeft.svg"
 import {RadioButton} from "shared/ui/radiobutton/RadioButton";
 import {MultiSelect} from "shared/ui/select/Select";
-import {setPortShip, setSearchName, setTypeShip} from "widgets/ships";
+import {
+    selectorShipName,
+    selectorShipPort,
+    selectorShipType,
+    setPortShip,
+    setSearchName,
+    setTypeShip
+} from "widgets/ships";
+import {useSelector} from "react-redux";
 
 type PropsType = {
     isActiveFilter: boolean
@@ -13,7 +21,11 @@ type PropsType = {
 }
 
 export const Sidebar: FC<PropsType> = ({isActiveFilter, toggleActiveFilter}) => {
+
     const dispatch = useAppDispatch()
+    const shipType = useSelector(selectorShipType)
+    const shipPort = useSelector(selectorShipPort)
+    const shipNameSearch = useSelector(selectorShipName)
 
     const onChangeSearch = (shipName: string) => {
         dispatch(setSearchName(shipName))
@@ -23,7 +35,7 @@ export const Sidebar: FC<PropsType> = ({isActiveFilter, toggleActiveFilter}) => 
         dispatch(setTypeShip(shipType))
     }
 
-    const onPortChange = (shipPort: string) => {
+    const onPortChange = (shipPort: string[]) => {
         dispatch(setPortShip(shipPort))
     }
 
@@ -48,9 +60,10 @@ export const Sidebar: FC<PropsType> = ({isActiveFilter, toggleActiveFilter}) => 
                 <span className={styles.sidebar__titleText}>Фильтры</span>
             </div>
             <div className={styles.sidebar__body}>
-                <Search label={'Название'} onChange={(e) => onChangeSearch(e.target.value)}/>
-                <MultiSelect options={optionsSelect} onChange={e => onPortChange(e)}/>
-                <RadioButton options={optionsRadioButton} onChange={(e => onTypeChange(e.currentTarget.value))}
+                <Search currentValue ={shipNameSearch} label={'Название'} onChange={(e) => onChangeSearch(e.target.value)}/>
+                <MultiSelect selected = {shipPort} options={optionsSelect} onChange={e => onPortChange(e)}/>
+                <RadioButton selected={shipType} options={optionsRadioButton}
+                             onChange={(e => onTypeChange(e.currentTarget.value))}
                              label={'Тип'}/>
             </div>
         </div>

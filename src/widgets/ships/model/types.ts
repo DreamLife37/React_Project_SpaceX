@@ -1,4 +1,4 @@
-import { ShipsDataType } from "entities/shipItem"
+import {ShipsDataType} from "entities/shipItem"
 
 export type InitialStateType = {
     shipsData: ShipsDataType[],
@@ -9,6 +9,13 @@ export type InitialStateType = {
 }
 
 export type QueryParamsType = {
+    ship_type: string,
+    home_port: string [],
+    offset: number,
+    ship_name: string
+}
+
+export type QueryParamsModelType = {
     ship_type: string,
     home_port: string,
     offset: number,

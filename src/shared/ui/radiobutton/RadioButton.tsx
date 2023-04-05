@@ -7,12 +7,13 @@ type OptionType = {
 }
 
 type PropsType = {
+    selected: string
     label: string
     options: OptionType[]
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const RadioButton: FC<PropsType> = ({label, onChange, options}) => {
+export const RadioButton: FC<PropsType> = ({label, onChange, options, selected}) => {
     return (
         <div className={styles.radioButtonGroup}>
             <div className={styles.radioButton__inner}>
@@ -23,7 +24,9 @@ export const RadioButton: FC<PropsType> = ({label, onChange, options}) => {
                             <input className={styles.radioButton__input} type="radio" id={item.value}
                                    value={item.value}
                                    name={label}
-                                   onChange={onChange}/>
+                                   onChange={onChange}
+                                   checked={item.value === selected}
+                            />
                             <label htmlFor={item.value} className={styles.radioButton__label}>{item.label}</label>
                         </div>
                     })}

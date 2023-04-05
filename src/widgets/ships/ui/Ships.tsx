@@ -17,6 +17,7 @@ import {Skeleton} from "shared/ui/skeleton/Skeleton";
 import iconFilter from "shared/assets/svg/filters.svg"
 import {setCurrentPage} from "../model/slice";
 import {Pagination} from 'entities/pagination';
+import {useSearchParams} from "react-router-dom";
 
 type PropsType = {
     isActiveFilter: boolean
@@ -24,20 +25,14 @@ type PropsType = {
 }
 
 export const Ships: FC<PropsType> = React.memo(({toggleActiveFilter, isActiveFilter}) => {
+
     const dispatch = useAppDispatch()
 
+    const currentPage = useSelector(selectorCurrentPage)
     const shipsData = useSelector(selectorShipsData)
     const isLoading = useSelector(selectorLoadingShips)
-    const shipNameSearch = useSelector(selectorShipName)
-    const shipType = useSelector(selectorShipType)
-    const shipPort = useSelector(selectorShipPort)
-    const currentPage = useSelector(selectorCurrentPage)
 
-    const debouncedSearchTerm = useDebounce(shipNameSearch);
 
-    useEffect(() => {
-        dispatch(fetchAllShips())
-    }, [dispatch, debouncedSearchTerm, shipType, shipPort, currentPage])
 
     const handlerPrev = () => {
         dispatch(setCurrentPage(currentPage - 1))
@@ -50,7 +45,7 @@ export const Ships: FC<PropsType> = React.memo(({toggleActiveFilter, isActiveFil
         <div className={styles.ships__inner}>
             <div className={styles.ships__title}>SpaceX Ships</div>
             <div className={styles.iconFilter} onClick={toggleActiveFilter}>
-                <img src={iconFilter}/>
+                <img src={iconFilter} alt={'Иконка фильтрации'}/>
                 <span className={styles.iconFilter__text}>Фильтры</span>
             </div>
             {isLoading

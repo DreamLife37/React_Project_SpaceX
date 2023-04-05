@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction, Reducer} from "@reduxjs/toolkit";
 import {InitialStateType} from "./types";
 import {fetchAllShips} from "./thunk";
 import {ShipsDataType} from "entities/shipItem";
@@ -12,7 +12,7 @@ const initialState: InitialStateType = {
     queryParams: {
         ship_name: '',
         ship_type: '',
-        home_port: '',
+        home_port: [],
         offset: 0
     }
 }
@@ -31,7 +31,7 @@ export const shipsSlice = createSlice({
         setTypeShip(state, action: PayloadAction<string>) {
             state.queryParams.ship_type = action.payload
         },
-        setPortShip(state, action: PayloadAction<string>) {
+        setPortShip(state, action: PayloadAction<string[]>) {
             state.queryParams.home_port = action.payload
         }
     },
@@ -55,4 +55,4 @@ export const shipsSlice = createSlice({
 
 export const {setSearchName, setTypeShip, setPortShip, setCurrentPage} = shipsSlice.actions
 
-export const shipsReducer = shipsSlice.reducer
+export const shipsReducer: Reducer<typeof initialState> = shipsSlice.reducer

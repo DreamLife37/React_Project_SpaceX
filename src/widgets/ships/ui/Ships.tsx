@@ -1,23 +1,17 @@
 import styles from './Ships.module.scss'
-import React, {FC, useEffect} from "react";
+import React, {FC} from "react";
 import {ShipItem} from 'entities/shipItem';
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {fetchAllShips} from "../model/thunk";
 import {useSelector} from "react-redux";
 import {
     selectorCurrentPage,
     selectorLoadingShips,
-    selectorShipName,
-    selectorShipPort,
     selectorShipsData,
-    selectorShipType
 } from "../model/selectors";
-import {useDebounce} from "shared/lib/hooks/useDebounce/useDebounce";
 import {Skeleton} from "shared/ui/skeleton/Skeleton";
 import iconFilter from "shared/assets/svg/filters.svg"
 import {setCurrentPage} from "../model/slice";
 import {Pagination} from 'entities/pagination';
-import {useSearchParams} from "react-router-dom";
 
 type PropsType = {
     isActiveFilter: boolean
@@ -31,8 +25,6 @@ export const Ships: FC<PropsType> = React.memo(({toggleActiveFilter, isActiveFil
     const currentPage = useSelector(selectorCurrentPage)
     const shipsData = useSelector(selectorShipsData)
     const isLoading = useSelector(selectorLoadingShips)
-
-
 
     const handlerPrev = () => {
         dispatch(setCurrentPage(currentPage - 1))
